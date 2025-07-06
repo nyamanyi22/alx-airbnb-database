@@ -40,6 +40,3 @@ The diagram below visualizes all the entities and how they relate to each other.
 - Foreign keys enforce relational integrity between entities.
 - ENUM types are used for roles, statuses, and payment methods.
 
-
-
-![ER Diagram](image.png)
