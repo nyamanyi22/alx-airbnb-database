@@ -87,4 +87,51 @@ Module: Airbnb Advanced Database
 ## 📬 Submission
 
 All tasks are implemented in this folder and linked correctly as per ALX requirements.
+# Advanced SQL Queries – Joins
+
+This file contains advanced SQL queries demonstrating various types of JOIN operations on the Airbnb database schema.
+
+## File: joins_queries.sql
+
+### 1. INNER JOIN – Bookings with Users
+This query retrieves all bookings along with the users who made them. It uses `INNER JOIN` to return only matching records from both tables.
+
+### 2. LEFT JOIN – Properties with Reviews (if any)
+This query retrieves all properties and their associated reviews. Properties with no reviews are still shown with `NULL` values for review fields.
+
+### 3. FULL OUTER JOIN – Users and Bookings (even unmatched)
+Since MySQL doesn’t support `FULL OUTER JOIN` directly, this query uses a `UNION` of `LEFT JOIN` and `RIGHT JOIN` to combine users and bookings regardless of whether they are linked.
+
+---
+
+## How to Run
+
+Use a SQL environment like MySQL Workbench, phpMyAdmin, or the MySQL CLI. Make sure the Airbnb database schema and tables (`users`, `bookings`, `properties`, `reviews`) already exist.
+
+```bash
+mysql -u your_user -p your_database < joins_queries.sql
+
+---
+
+## Subqueries
+
+### 1. Properties with Average Rating > 4.0
+This query uses a **non-correlated subquery** to select property IDs from the `reviews` table where the average rating exceeds 4.0, and then fetches those properties from the `properties` table.
+
+### 2. Users with More Than 3 Bookings
+This query uses a **correlated subquery** to count bookings for each user directly inside the `WHERE` clause. It only returns users whose booking count is greater than 3.
+
+---
+
+## Aggregations and Window Functions
+
+### 1. Total Bookings per User
+This query uses the `COUNT()` function with `GROUP BY` to calculate how many bookings each user has made. A `LEFT JOIN` ensures even users with 0 bookings are shown.
+
+### 2. Ranking Properties by Popularity
+This query uses the `RANK()` window function to assign a rank to each property based on how many bookings it has received. Ties receive the same rank.
+
+These queries help identify active users and the most booked properties in the Airbnb dataset.
+
+
 
